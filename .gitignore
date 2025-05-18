@@ -1,8 +1,4 @@
-# VS Code settings
-.vscode/
-
-# Mac system files
-.DS_Store
+/build/
 
 # Compiled object files
 *.o
@@ -12,7 +8,6 @@
 *.exe
 *.out
 *.app
-mi_rpg
 
 # Debug and log files
 *.log
@@ -21,11 +16,6 @@ mi_rpg
 /build/
 /bin/
 /lib/
-
-# SFML CMake or cache
-CMakeCache.txt
-CMakeFiles/
-cmake-build-*/
 
 # Core dumps
 core.*
