@@ -6,13 +6,13 @@ IncludeBlocks: Regroup
 
 IncludeCategories:
     # Project headers
-  - Regex: '^".*\.h"$'
+  - Regex: '^".*\.(h|hpp)"$'
     Priority: 1
     # Test framework headers
-  - Regex: '^<criterion/.*\.h>$'
+  - Regex: '^<criterion/.*\.(h|hpp)>$'
     Priority: 2
     # System headers
-  - Regex: '^<.*\.h>$'
+  - Regex: '^<.*\.(h|hpp)>$'
     Priority: 3
     # Any other include
   - Regex: '.*'
