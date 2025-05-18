@@ -1,13 +1,21 @@
 #include "libs.hpp"
 #include "renderable.hpp"
+#include "canvas.hpp"
+#include "../include/utils/window_info.hpp"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Clicker");
+    sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Clicker");
     window.setFramerateLimit(60);
 
     renderable player(sf::Vector2f(100, 100), 33, 30, "assets/alpha/hand.png",
                       33, 30);
+    
+    canvas main_canvas(sf::Vector2f(200, 300), 150, 100);
+    main_canvas.add_renderable(new renderable(sf::Vector2f(30, 30), 33, 30, "assets/alpha/hand.png",
+                      33, 30));
+    main_canvas.add_renderable(new renderable(sf::Vector2f(70, 30), 33, 30, "assets/alpha/hand.png",
+    33, 30));
 
     while (window.isOpen()) {
         sf::Event event;
@@ -18,8 +26,8 @@ int main()
 
         window.clear();
 
-        for (renderable *renderable : renderable::getRenderables()) {
-            renderable->render(window);
+        for (canvas *canva : canvas::get_canvaseses()) {
+            canva->render(window);
         }
 
         window.display();
