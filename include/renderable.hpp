@@ -1,3 +1,6 @@
+#ifndef RENDERABLE_HPP
+#define RENDERABLE_HPP
+
 #include "libs.hpp"
 
 class renderable
@@ -34,3 +37,5 @@ class renderable
 
     static std::vector<renderable *> renderables;
 };
+
+#endif  // !RENDERABLE_HPP

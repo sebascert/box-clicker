@@ -1,5 +1,5 @@
-#ifndef LIBS
-#define LIBS
+#ifndef LIBDS_HPP
+#define LIBDS_HPP
 
 #include <SFML/Graphics.hpp>
 
@@ -7,4 +7,4 @@
 #include <string>
 #include <vector>
 
-#endif
+#endif  // !LIBDS_HPP
