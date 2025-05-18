@@ -1,9 +1,9 @@
 #ifndef LIBS
 #define LIBS
 
-#include <iostream>
-#include <vector>
-#include <string>
 #include <SFML/Graphics.hpp>
+#include <iostream>
+#include <string>
+#include <vector>
 
 #endif
