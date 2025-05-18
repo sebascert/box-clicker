@@ -5,7 +5,7 @@ include_dir := include
 build_dir   := build
 
 # sources and objects
-sources := $(shell find $(src_dir) -name '*.cpp')
+sources := $(shell find $(source_dir) -name '*.cpp')
 headers := $(shell find $(include_dir) -name '*.hpp')
 objs    := $(sources:.cpp=.o)
 
@@ -61,7 +61,7 @@ $(build_dir):
 
 # clean rules
 clean:
-	@find . -name '*.o' -delete
+	@find . -name '*.o' -exec rm -f {} +
 	@rm -rf $(build_dir)
 
 clean-clangdb:
