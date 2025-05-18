@@ -1,16 +1,24 @@
 # box-clicker
 
+## Dependencies
+
+The game uses the [SFML library](https://www.sfml-dev.org/).
+
 ## Clang DataBase, Linting and Formatting
 
-Use `clang-tidy` and `clang-format`, for linting and formatting,
-correspondingly. Run the lint and format of the source code with:
+Use [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) and
+[clang-format](https://clang.llvm.org/docs/ClangFormat.html), for linting and
+formatting, correspondingly. Run the lint and format of the source code with:
 
 ```bash
 make lint
 make format
 ```
 
-Both tools take advantage of the `Clang DataBase`, regenerate it with:
+Both tools take advantage of the [clang compilation
+database](https://clang.llvm.org/docs/JSONCompilationDatabase.html), it's
+generation requires [bear](https://github.com/rizsotto/Bear), regenerate it
+with:
 
 ```bash
 make clangdb
