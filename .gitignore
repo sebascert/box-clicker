@@ -2,6 +2,7 @@
 
 # clang compile database
 /compile_commands.json
+/.cache/
 
 # Compiled object files
 *.o
