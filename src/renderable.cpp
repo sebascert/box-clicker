@@ -19,7 +19,7 @@ sf::Vector2f renderable::get_position(){
 void renderable::update_spritesheet_cords(){
     sf::IntRect spritesheet_coords;
     spritesheet_coords.top = _render_y * _render_height;
-    spritesheet_coords.left = _render_x * _render_width + _render_width * (( - 1)/-2);
+    spritesheet_coords.left = _render_x * _render_width + _render_width * ((_direction - 1)/-2);
     spritesheet_coords.width = _render_width * _direction;
     spritesheet_coords.height = _render_height;
     _sprite.setTextureRect(spritesheet_coords);
