@@ -6,6 +6,7 @@ build_dir   := build
 
 # sources and objects
 sources := $(shell find $(src_dir) -name '*.cpp')
+headers := $(shell find $(include_dir) -name '*.hpp')
 objs    := $(sources:.cpp=.o)
 
 # env setup
@@ -20,10 +21,30 @@ else
 	CXXFLAGS += -g
 endif
 
+CLANGDB   := compile_commands.json
+
+MAKEFLAGS += --no-print-directory
+
+# target rules
 all: $(target)
 
 $(target): $(build_dir)/$(target)
 
+.PHONY: all
+
+# utils rules
+format:
+	@clang-format -i $(headers) $(sources)
+
+lint: $(CLANGDB)
+	@clang-tidy $(headers) $(sources) -p .
+
+clangdb: clean-clangdb
+	@$(MAKE) $(CLANGDB)
+
+.PHONY: format lint clangdb
+
+# compilation rules
 $(build_dir)/$(target): $(objs) | $(build_dir)
 	@$(CXX) $^ $(CXXFLAGS) $(LIB_SFML) -o $@
 
@@ -31,13 +52,22 @@ $(build_dir)/$(target): $(objs) | $(build_dir)
 	@echo "compiling $<"
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
-.PHONY: all
+$(CLANGDB):
+	@$(MAKE) clean
+	@bear -- $(MAKE) $(objs)
 
 $(build_dir):
 	@mkdir -p $(build_dir)
 
+# clean rules
 clean:
 	@find . -name '*.o' -delete
 	@rm -rf $(build_dir)
 
-.PHONY: clean
+clean-clangdb:
+	@rm -f $(CLANGDB)
+	@rm -rf .cache/clangd
+
+clean-all: clean clean-clangdb
+
+.PHONY: clean clean-clangdb clean-all

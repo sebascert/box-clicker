@@ -1,5 +1,21 @@
 # box-clicker
 
+## Clang DataBase, Linting and Formatting
+
+Use `clang-tidy` and `clang-format`, for linting and formatting,
+correspondingly. Run the lint and format of the source code with:
+
+```bash
+make lint
+make format
+```
+
+Both tools take advantage of the `Clang DataBase`, regenerate it with:
+
+```bash
+make clangdb
+```
+
 ## Compiling
 
 From the guide on [compiling sfml](https://www.sfml-dev.org/tutorials/3.0/getting-started/linux/#compiling-an-sfml-program)
@@ -21,8 +37,15 @@ make
 make BUILD=release
 ```
 
+## Clean Generated Files
+
 Clean the generated files with:
 
 ```bash
+make clean-all
+
+# compilation files
 make clean
+# clang database
+make clean-clangdb
 ```

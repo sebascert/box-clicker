@@ -1,5 +1,8 @@
 /build/
 
+# clang compile database
+/compile_commands.json
+
 # Compiled object files
 *.o
 *.obj
