@@ -1,5 +1,5 @@
 #include "../include/libs.hpp"
-#include "./renderable.cpp"
+#include "../include/renderable.hpp"
 
 int main() {
   sf::RenderWindow window(sf::VideoMode(800, 600), "Clicker");
