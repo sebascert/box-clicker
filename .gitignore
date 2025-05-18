@@ -1,32 +1,31 @@
-# Prerequisites
-*.d
+# VS Code settings
+.vscode/
 
-# Compiled Object files
-*.slo
-*.lo
+# Mac system files
+.DS_Store
+
+# Compiled object files
 *.o
 *.obj
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
+# Compiled binary executable
 *.exe
 *.out
 *.app
+mi_rpg
+
+# Debug and log files
+*.log
+
+# Build directories
+/build/
+/bin/
+/lib/
+
+# SFML CMake or cache
+CMakeCache.txt
+CMakeFiles/
+cmake-build-*/
+
+# Core dumps
+core.*
