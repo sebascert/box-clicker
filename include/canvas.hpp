@@ -1,19 +1,20 @@
 #include "libs.hpp"
 #include "renderable.hpp"
 
-class canvas: public renderable
+class canvas : public renderable
 {
-public:
+   public:
     canvas(sf::Vector2f position, int width, int height);
     void render(sf::RenderWindow &window) override;
     void add_renderable(renderable *renderable);
 
-    static std::vector<canvas*> get_canvaseses() {
+    static std::vector<canvas *> get_canvaseses()
+    {
         return canvases;
     }
 
-private:
-    std::vector<renderable*> _renderables_inside_canvas;
+   private:
+    std::vector<renderable *> _renderables_inside_canvas;
     int _camera_x = 0;
     int _camera_y = 0;
     float _camera_zoom = 1;
@@ -22,6 +23,5 @@ private:
     float _go_to_camera_zoom = 1;
     float _camera_speed = 0.3;
 
-    static std::vector<canvas*> canvases;
+    static std::vector<canvas *> canvases;
 };
-

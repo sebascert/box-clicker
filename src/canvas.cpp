@@ -1,9 +1,9 @@
 #include "canvas.hpp"
 
-canvas::canvas(sf::Vector2f position, int width, int height):
-    renderable(position, width, height)
+canvas::canvas(sf::Vector2f position, int width, int height)
+    : renderable(position, width, height)
 {
-   canvases.push_back(this);
+    canvases.push_back(this);
 }
 
 void canvas::render(sf::RenderWindow &window)
@@ -27,4 +27,4 @@ void canvas::add_renderable(renderable *renderable)
     _renderables_inside_canvas.push_back(renderable);
 }
 
-std::vector<canvas*> canvas::canvases;
+std::vector<canvas *> canvas::canvases;

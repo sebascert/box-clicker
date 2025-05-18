@@ -8,11 +8,12 @@ class renderable
    public:
     renderable(sf::Vector2f position, int width, int height,
                const std::string& spritesheet_path = "", int render_width = -1,
-               int render_height = -1, bool am_i_camera_sensible = true, float parallax = 1);
+               int render_height = -1, bool am_i_camera_sensible = true,
+               float parallax = 1);
     ~renderable()
     {
     }
-    virtual void render(sf::RenderWindow &window);
+    virtual void render(sf::RenderWindow& window);
     void update_spritesheet_cords();
     sf::Vector2f get_position();
 
