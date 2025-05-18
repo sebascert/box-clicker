@@ -12,7 +12,7 @@ objs    := $(sources:.cpp=.o)
 CXX         := g++
 CXXSTD      := c++17
 LIB_SFML    := -lsfml-graphics -lsfml-window -lsfml-system
-CXXFLAGS    := -Wall -Wextra -std=$(CXXSTD) -I $(include_dir)
+CXXFLAGS    := -Wall -Wextra -std=$(CXXSTD) -I$(include_dir)
 ifeq ($(BUILD),release)
 	target += _release
 	CXXFLAGS += -O2
@@ -25,7 +25,7 @@ all: $(target)
 $(target): $(build_dir)/$(target)
 
 $(build_dir)/$(target): $(objs) | $(build_dir)
-	@$(CXX) $(CXXFLAGS) $(LIB_SFML) $^ -o $@
+	@$(CXX) $^ $(CXXFLAGS) $(LIB_SFML) -o $@
 
 %.o: %.cpp
 	@echo "compiling $<"
