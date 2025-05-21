@@ -9,7 +9,7 @@ IncludeCategories:
   - Regex: '^".*\.(h|hpp)"$'
     Priority: 1
     # Test framework headers
-  - Regex: '^<criterion/.*\.(h|hpp)>$'
+  - Regex: '^<SFML/.*\.(h|hpp)>$'
     Priority: 2
     # System headers
   - Regex: '^<.*\.(h|hpp)>$'
