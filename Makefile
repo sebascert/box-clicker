@@ -39,6 +39,9 @@ format:
 lint: $(CLANGDB)
 	@clang-tidy $(headers) $(sources) -p .
 
+lint-fix: $(CLANGDB)
+	@clang-tidy $(headers) $(sources) -p . --fix
+
 clangdb: clean-clangdb
 	@$(MAKE) $(CLANGDB)
 

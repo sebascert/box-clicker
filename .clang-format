@@ -19,8 +19,4 @@ IncludeCategories:
     Priority: 4
 
 IndentWidth: 4
-
-BreakBeforeBraces: Linux
-AllowShortFunctionsOnASingleLine: false
-AllowShortIfStatementsOnASingleLine: false
 ColumnLimit: 80
