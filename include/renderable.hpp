@@ -1,7 +1,8 @@
 #ifndef RENDERABLE_HPP
 #define RENDERABLE_HPP
 
-#include "libs.hpp"
+#include <string>
+#include <SFML/Graphics.hpp>
 
 class renderable
 {

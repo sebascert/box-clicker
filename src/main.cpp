@@ -1,7 +1,8 @@
-#include "../include/utils/window_info.hpp"
+#include "utils/window_info.hpp"
 #include "canvas.hpp"
-#include "libs.hpp"
 #include "renderable.hpp"
+
+#include <SFML/Graphics.hpp>
 
 int main()
 {
@@ -27,7 +28,7 @@ int main()
 
         window.clear();
 
-        for (canvas *canva : canvas::get_canvaseses()) {
+        for (canvas *canva : canvas::get_canvases()) {
             canva->render(window);
         }
 

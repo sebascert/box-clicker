@@ -1,6 +1,6 @@
 #include "renderable.hpp"
 
-#include "../include/utils/window_info.hpp"
+#include "utils/window_info.hpp"
 
 renderable::renderable(sf::Vector2f position, int width, int height,
                        const std::string& spritesheet_path, int render_width,

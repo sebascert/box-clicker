@@ -1,18 +1,18 @@
 #include "canvas.hpp"
 
-canvas::canvas(sf::Vector2f position, int width, int height)
+canvas::canvas(sf::Vector2f position, int width, int height, sf::Color background_color)
     : renderable(position, width, height)
 {
     canvases.push_back(this);
+    _background_rectangle.setSize(sf::Vector2f(width, height));
+    _background_rectangle.setFillColor(background_color);
 }
 
 void canvas::render(sf::RenderWindow &window)
 {
-    sf::RectangleShape rectangle(sf::Vector2f(_width, _height));
-    rectangle.setFillColor(sf::Color::White);
     sf::Vector2f position = get_position();
-    rectangle.setPosition(position.x, position.y);
-    window.draw(rectangle);
+    _background_rectangle.setPosition(position.x, position.y);
+    window.draw(_background_rectangle);
 
     for (renderable *renderable : _renderables_inside_canvas) {
         renderable->canvas_position_offset = sf::Vector2f(x, y);
