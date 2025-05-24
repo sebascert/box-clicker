@@ -1,11 +1,12 @@
 Checks: >
+  -*,
   clang-analyzer-*,
-  cppcoreguidelines-*,
-  bugprone-*,
+  clang-diagnostic-*,
+  linuxkernel-*,
+  portability-*,
   performance-*,
+  bugprone-*,
   readability-*,
-  google-*
-  misc-*,
 
 WarningsAsErrors: '*'
 
