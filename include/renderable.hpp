@@ -1,28 +1,28 @@
 #ifndef RENDERABLE_HPP
 #define RENDERABLE_HPP
 
-#include "libs.hpp"
+#include <string>
+#include <SFML/Graphics.hpp>
 
 class renderable
 {
    public:
     renderable(sf::Vector2f position, int width, int height,
-               std::string spritesheet_path, int render_width = -1,
-               int render_height = -1);
+               const std::string& spritesheet_path = "", int render_width = -1,
+               int render_height = -1, bool am_i_camera_sensible = true,
+               float parallax = 1);
     ~renderable()
     {
     }
-    void render(sf::RenderWindow &window);
+    virtual void render(sf::RenderWindow& window);
     void update_spritesheet_cords();
     sf::Vector2f get_position();
 
     int x = 0;
     int y = 0;
-
-    static const std::vector<renderable *> &getRenderables()
-    {
-        return renderables;
-    }
+    sf::Vector2f canvas_position_offset;
+    sf::Vector2f canvas_camera_coords;
+    float canvas_camera_zoom = 1;
 
    protected:
     int _width;
@@ -34,8 +34,8 @@ class renderable
     int _direction = 1;
     sf::Texture _texture;
     sf::Sprite _sprite;
-
-    static std::vector<renderable *> renderables;
+    bool _am_i_camera_sensible = false;
+    float _parallax = 1;
 };
 
-#endif  // !RENDERABLE_HPP
+#endif
