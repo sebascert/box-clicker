@@ -1,16 +1,15 @@
 #include "input/manager.hpp"
 
-void InputManager::refreshDispatchedEvents()
-{
+void InputManager::RefreshDispatchedEvents() {
     dispatched_events.erase(
-        std::remove_if(
-            dispatched_events.begin(), dispatched_events.end(),
-            [](BaseInputEvent* e) { return !e->refreshDispatchedDuration(); }),
+        std::remove_if(dispatched_events.begin(), dispatched_events.end(),
+                       [](BaseInputEvent* event) {
+                           return !event->RefreshDispatchedDuration();
+                       }),
         dispatched_events.end());
 }
 
-void InputManager::dispatchEvent(sf::Event& sf_event)
-{
+void InputManager::DispatchEvent(sf::Event& sf_event) {
     switch (sf_event.type) {
             /*case sf::Event::LostFocus:*/
             /*case sf::Event::GainedFocus:*/
@@ -33,11 +32,11 @@ void InputManager::dispatchEvent(sf::Event& sf_event)
             /*case sf::Event::SensorChanged:*/
             /*triggerInputEvent(event);*/
         case sf::Event::MouseButtonPressed:
-            on_mouse_click_enter.dispatch(INPUT_EVENT_DURATION,
+            on_mouse_click_enter.Dispatch(INPUT_EVENT_DURATION,
                                           sf_event.mouseButton.button);
             break;
         case sf::Event::MouseButtonReleased:
-            on_mouse_click_exit.dispatch(INPUT_EVENT_DURATION,
+            on_mouse_click_exit.Dispatch(INPUT_EVENT_DURATION,
                                          sf_event.mouseButton.button);
             break;
         default:

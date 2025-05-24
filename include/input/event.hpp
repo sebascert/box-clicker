@@ -9,13 +9,12 @@ using EventType = sf::Event::EventType;
 
 // interface for dispatch duration
 // consumed when is needed
-class BaseInputEvent
-{
+class BaseInputEvent {
    public:
-    bool dispatched();
+    bool Dispatched() const;
     // decreases by one the _dispatchedDuration
     // and returns true if it's still not zero
-    bool refreshDispatchedDuration();
+    bool RefreshDispatchedDuration();
 
    protected:
     BaseInputEvent() = default;
@@ -25,34 +24,32 @@ class BaseInputEvent
 };
 
 template <typename T>
-class InputEvent : BaseInputEvent
-{
+class InputEvent : BaseInputEvent {
     using Listener = void (*)(T);
 
    public:
     InputEvent() = default;
     ~InputEvent() = default;
 
-    bool subscribe(Listener cb);
-    bool unsubscribe(Listener cb);
-    void dispatch(uint duration, T arg);
+    bool Subscribe(Listener listener);
+    bool Unsubscribe(Listener listener);
+    void Dispatch(uint duration, T arg);
 
    private:
     std::unordered_set<Listener> callbacks;
 };
 
 template <>
-class InputEvent<void> : BaseInputEvent
-{
+class InputEvent<void> : BaseInputEvent {
     using Listener = void (*)();
 
    public:
     InputEvent() = default;
     ~InputEvent() = default;
 
-    bool subscribe(Listener cb);
-    bool unsubscribe(Listener cb);
-    void dispatch(uint duration);
+    bool Subscribe(Listener listener);
+    bool Unsubscribe(Listener listener);
+    void Dispatch(uint duration);
 
    private:
     std::unordered_set<Listener> callbacks;

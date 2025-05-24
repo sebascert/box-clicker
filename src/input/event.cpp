@@ -1,50 +1,40 @@
 #include "input/event.hpp"
 
-bool BaseInputEvent::dispatched()
-{
-    return _dispatchedDuration > 0;
-}
-bool BaseInputEvent::refreshDispatchedDuration()
-{
+bool BaseInputEvent::Dispatched() const { return _dispatchedDuration > 0; }
+bool BaseInputEvent::RefreshDispatchedDuration() {
     return --_dispatchedDuration > 0;
 }
 
 template <typename T>
-bool InputEvent<T>::subscribe(Listener cb)
-{
-    return callbacks.insert(cb).second;
+bool InputEvent<T>::Subscribe(Listener listener) {
+    return callbacks.insert(listener).second;
 }
 
 template <typename T>
-bool InputEvent<T>::unsubscribe(Listener cb)
-{
-    return callbacks.erase(cb) > 0;
+bool InputEvent<T>::Unsubscribe(Listener listener) {
+    return callbacks.erase(listener) > 0;
 }
 
 template <typename T>
-void InputEvent<T>::dispatch(uint duration, T arg)
-{
+void InputEvent<T>::Dispatch(uint duration, T arg) {
     _dispatchedDuration = duration;
-    for (Listener cb : callbacks) {
-        cb(arg);
+    for (Listener listener : callbacks) {
+        listener(arg);
     }
 }
 
-bool InputEvent<void>::subscribe(Listener cb)
-{
-    return callbacks.insert(cb).second;
+bool InputEvent<void>::Subscribe(Listener listener) {
+    return callbacks.insert(listener).second;
 }
 
-bool InputEvent<void>::unsubscribe(Listener cb)
-{
-    return callbacks.erase(cb) > 0;
+bool InputEvent<void>::Unsubscribe(Listener listener) {
+    return callbacks.erase(listener) > 0;
 }
 
-void InputEvent<void>::dispatch(uint duration)
-{
+void InputEvent<void>::Dispatch(uint duration) {
     _dispatchedDuration = duration;
-    for (Listener cb : callbacks) {
-        cb();
+    for (Listener listener : callbacks) {
+        listener();
     }
 }
 
